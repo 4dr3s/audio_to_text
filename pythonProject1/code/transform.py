@@ -1,4 +1,3 @@
-# Python 3.9
 import moviepy.editor as mp
 from huggingsound import SpeechRecognitionModel
 import soundfile as sf
