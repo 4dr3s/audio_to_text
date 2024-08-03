@@ -16,18 +16,18 @@ def change_description(description):
 
 
 path = 'C:/Universidad/Legislacion/videos/'
+model = SpeechRecognitionModel("jonatasgrosman/wav2vec2-large-xlsr-53-spanish")
 for i, item in df.iterrows():
     try:
         if item['fuente'] == 'Tik Tok':
             video_path = path + f"{item['id']}.mp4"
             video_file = mp.VideoFileClip(video_path)
-            audio_path = path + f"{item['id']}.mp3"
+            audio_path = path + f"Audios/{item['id']}.mp3"
             video_file.audio.write_audiofile(audio_path)
             data, sample_rate = sf.read(audio_path)
             if sample_rate != 16000:
                 data = resample(data, int(len(data) * 16000 / sample_rate))
             sf.write(audio_path, data, 16000)
-            model = SpeechRecognitionModel("jonatasgrosman/wav2vec2-large-xlsr-53-spanish")
             audio_paths = [audio_path]
             transcriptions = model.transcribe(audio_paths)
             if transcriptions:
