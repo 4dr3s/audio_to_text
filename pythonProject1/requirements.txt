@@ -1,0 +1,5 @@
+moviepy == 1.0.3
+huggingsound == 0.1.6
+soundfile == 0.12.1
+scipy == 1.13.1
+pandas == 2.2.2
